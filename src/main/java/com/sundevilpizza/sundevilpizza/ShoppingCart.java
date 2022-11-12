@@ -17,7 +17,7 @@ public class ShoppingCart {
     }
 
     public int getLength() {
-        return cart.size();
+        return cart.size()-1;
     }
 
     public Pizza getPizza(int index) {
@@ -25,13 +25,21 @@ public class ShoppingCart {
     }
 
 
-    //Mutators
     public void addPizza(Pizza p) {
         cart.add(p);
     }
 
     public void addPizza(Pizza p, int index) {
         cart.add(index, p);
+    }
+
+    //Remove a specified pizza
+    public void removePizza(Pizza p) {
+        cart.remove(cart.lastIndexOf(p));
+    }
+
+    public void removePizza(int idx) {
+        cart.remove(idx);
     }
 
     //Override toString

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -31,14 +31,14 @@
                         </Label>
                      </children>
                   </VBox>
-                  <RadioButton fx:id="origRadio" mnemonicParsing="false" onAction="#calculateTotal" selected="true" text="Original Crust">
+                  <RadioButton fx:id="origRadio" mnemonicParsing="false" selected="true" text="Original Crust">
                      <toggleGroup>
                         <ToggleGroup fx:id="PizzaTypeToggle" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="thinRadio" mnemonicParsing="false" onAction="#calculateTotal" text="Thin Crust" toggleGroup="$PizzaTypeToggle" />
-                  <RadioButton fx:id="chickpeaRadio" mnemonicParsing="false" onAction="#calculateTotal" text="Chickpea Crust" toggleGroup="$PizzaTypeToggle" />
-                  <RadioButton fx:id="cauliflowerRadio" mnemonicParsing="false" onAction="#calculateTotal" text="Cauliflower Crust" toggleGroup="$PizzaTypeToggle" />
+                  <RadioButton fx:id="thinRadio" mnemonicParsing="false" text="Thin Crust" toggleGroup="$PizzaTypeToggle" />
+                  <RadioButton fx:id="chickpeaRadio" mnemonicParsing="false" text="Chickpea Crust" toggleGroup="$PizzaTypeToggle" />
+                  <RadioButton fx:id="cauliflowerRadio" mnemonicParsing="false" text="Cauliflower Crust" toggleGroup="$PizzaTypeToggle" />
                   <HBox fx:id="sizeBox" alignment="CENTER_LEFT" prefHeight="16.0" prefWidth="200.0">
                      <children>
                         <Label text="Size">
@@ -94,24 +94,29 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ScrollPane fx:id="scrollPane" maxHeight="150.0" prefHeight="200.0" prefWidth="200.0" />
-                  <HBox prefWidth="200.0">
+                  <TextArea fx:id="textArea" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                  <VBox prefWidth="100.0">
                      <children>
                         <Label fx:id="cartTotalLabel" text="Cart Total: ">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
+                        <Label fx:id="currentTotalLabel" text="Current Total: $6.00">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
                      </children>
-                  </HBox>
+                  </VBox>
                   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" text="Add">
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addToCart" text="Add">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="removeButton" mnemonicParsing="false" text="Remove">
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeFromCart" text="Remove">
                            <font>
                               <Font size="16.0" />
                            </font>

@@ -138,6 +138,21 @@ public class OrderPlacer {
         event.consume();
     }
 
+    @FXML
+    private void removeFromCart(ActionEvent event) {
+        if (s1.getLength() < 0) {
+            return;
+        }
+        s1.removePizza(s1.getLength());
+        textArea.setText(s1.toString());
+
+        //Change from text area to maybe a comboBox to select which order to delete?
+
+        cartTotalLabel.setText(String.format("Cart Total: $%,.2f", s1.getTotal()));
+
+        event.consume();
+    }
+
 
 
 }
