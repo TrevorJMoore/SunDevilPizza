@@ -59,18 +59,32 @@ public class OrderPlacer {
     private Pizza pizzaInfo() {
         Pizza p1 = new Pizza();
         //Check Pizza Type and Size
-        for (Node pizzaType : pizzaTypesBox.getChildren()) {
+        for (Node pizzaType: pizzaTypesBox.getChildren()) {
             if (pizzaType instanceof RadioButton && ((RadioButton)pizzaType).isSelected()) {
                 switch (((RadioButton)pizzaType).getId()) {
-                    case "origRadio" -> p1.setPizzaType("Original Crust");
-                    case "thinRadio" -> p1.setPizzaType("Thin Crust");
-                    case "chickpeaRadio" -> p1.setPizzaType("Chickpea Crust");
-                    case "cauliflowerRadio" -> p1.setPizzaType("Cauliflower Crust");
+                    case "origRadio":
+                        p1.setPizzaType("Original Crust");
+                        break;
+                    case "thinRadio":
+                        p1.setPizzaType("Thin Crust");
+                        break;
+                    case "chickpeaRadio":
+                        p1.setPizzaType("Chickpea Crust");
+                        break;
+                    case "cauliflowerRadio":
+                        p1.setPizzaType("Cauliflower Crust");
+                        break;
                 }
                 switch (((RadioButton)pizzaType).getId()) {
-                    case "mediumRadio" -> p1.setPizzaSize("Medium");
-                    case "largeRadio" -> p1.setPizzaSize("Large");
-                    case "smallRadio" -> p1.setPizzaSize("Small");
+                    case "mediumRadio":
+                        p1.setPizzaSize("Medium");
+                        break;
+                    case "largeRadio":
+                        p1.setPizzaSize("Large");
+                        break;
+                    case "smallRadio":
+                        p1.setPizzaSize("Small");
+                        break;
                 }
 
             }
@@ -78,18 +92,36 @@ public class OrderPlacer {
 
         //Pizza Toppings
         ArrayList<String> top = new ArrayList<>();
-        for (Node n1 : pizzaToppingsBox.getChildren()) {
+        for (Node n1: pizzaToppingsBox.getChildren()) {
             if (n1 instanceof CheckBox && ((CheckBox)n1).isSelected()) {
                 switch (((CheckBox)n1).getId()) {
-                    case "xtraCheckBox" -> top.add("Xtra-Cheese");
-                    case "pepperoniCheckBox" -> top.add("Pepperoni");
-                    case "sausageCheckBox" -> top.add("Sausage");
-                    case "hamCheckBox" -> top.add("Ham");
-                    case "jalapenoCheckBox" -> top.add("Jalapenos");
-                    case "oliveCheckBox" -> top.add("Olives");
-                    case "onionCheckBox" -> top.add("Onions");
-                    case "mushroomCheckBox" -> top.add("Mushrooms");
-                    case "pineappleCheckBox" -> top.add("Pineapples");
+                    case "xtraCheckBox":
+                        top.add("Xtra-Cheese");
+                        break;
+                    case "pepperoniCheckBox":
+                        top.add("Pepperoni");
+                        break;
+                    case "sausageCheckBox":
+                        top.add("Sausage");
+                        break;
+                    case "hamCheckBox":
+                        top.add("Ham");
+                        break;
+                    case "jalapenoCheckBox":
+                        top.add("Jalapenos");
+                        break;
+                    case "oliveCheckBox":
+                        top.add("Olives");
+                        break;
+                    case "onionCheckBox":
+                        top.add("Onions");
+                        break;
+                    case "mushroomCheckBox":
+                        top.add("Mushrooms");
+                        break;
+                    case "pineappleCheckBox":
+                        top.add("Pineapples");
+                        break;
                 }
             }
         }
@@ -101,19 +133,25 @@ public class OrderPlacer {
         return p1;
     }
 
-    //REMOVE IN PROD -> Change hardcoded numbers to be reflected in the class they are representing.
+    //REMOVE IN PROD: Change hardcoded numbers to be reflected in the class they are representing.
     private double calculateCost() {
         pizzaCost = 0;
-        for (Node pizzaSize : pizzaTypesBox.getChildren()) {
+        for (Node pizzaSize: pizzaTypesBox.getChildren()) {
             if (pizzaSize instanceof RadioButton && ((RadioButton)pizzaSize).isSelected()){
                 switch (((RadioButton) pizzaSize).getId()) {
-                    case "mediumRadio" -> pizzaCost += 8.00;
-                    case "largeRadio" -> pizzaCost += 10.00;
-                    case "smallRadio" -> pizzaCost += 6.00;
+                    case "mediumRadio":
+                        pizzaCost += 8.00;
+                        break;
+                    case "largeRadio":
+                        pizzaCost += 10.00;
+                        break;
+                    case "smallRadio":
+                        pizzaCost += 6.00;
+                        break;
                 }
             }
         }
-        for (Node n1 : pizzaToppingsBox.getChildren()) {
+        for (Node n1: pizzaToppingsBox.getChildren()) {
             if (n1 instanceof CheckBox) {
                 if (((CheckBox)n1).isSelected())
                     pizzaCost+=0.25;
