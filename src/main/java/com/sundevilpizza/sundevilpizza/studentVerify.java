@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class studentVerify {
@@ -15,6 +16,11 @@ public class studentVerify {
 	    @FXML
 	    private TextField username;
 
+	    @FXML
+	    private Label loginText;
+	    
+	    SunDevilPizzaApp s = new SunDevilPizzaApp();
+	    
 	    @FXML
 	    void userLogin(ActionEvent event) {
 	    	checkLogin();
@@ -31,11 +37,12 @@ public class studentVerify {
 		//	String typeUse = "Username: ";
 			String id = username.getText().toString();
 			if(id.length() == 10) {
-				System.out.println("success");
-				System.out.println(id);
+				 loginText.setText("Success!");
+		         
 			}
 			else {
-				System.out.println("Incorrect User id");
+				loginText.setText("Incorrect User id");
+				
 			}
 		//	name = (new StringBuilder()).append(typeUsername).append(name).toString();
 			
