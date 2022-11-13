@@ -16,6 +16,10 @@ public class ShoppingCart {
         return total;
     }
 
+    public ArrayList<Pizza> getPizzas() {
+        return cart;
+    }
+
     public int getLength() {
         return cart.size()-1;
     }
@@ -49,7 +53,12 @@ public class ShoppingCart {
         //Ex: Small Original Crust - Pepperoni, Cheese
         //Ex: Size Type - Toppings
         for (Pizza p: cart) {
-            ret += p.getPizzaSize() + " " + p.getPizzaType() + " - " + p.getToppings() + "\n";
+            if (p.hasToppings()) {
+                ret += p.getPizzaSize() + " " + p.getPizzaType() + " - " + p.getToppings() + "\n";
+            }
+            else {
+                ret += p.getPizzaSize() + " " + p.getPizzaType() + p.getToppings() + "\n";
+            }
         }
         return ret;
     }

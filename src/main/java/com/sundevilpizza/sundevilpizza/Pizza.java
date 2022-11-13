@@ -59,6 +59,10 @@ public class Pizza {
 
 
     //General Use Methods
+
+
+    public boolean hasToppings() { return m_toppings.size() > 0; }
+
     public void addTopping(String topping) {
         m_toppings.add(topping);
     }

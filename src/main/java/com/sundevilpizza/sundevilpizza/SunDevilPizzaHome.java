@@ -114,6 +114,7 @@ public class SunDevilPizzaHome extends Application {
                 Parent root = FXMLLoader.load(getClass().getResource("placeOrder.fxml"));
                 Scene orderScene = new Scene(root);
                 Stage orderStage = placeOrderStage();
+
                 orderStage.setScene(orderScene);
                 orderStage.show();
                 orderStage.setOnCloseRequest(closeOrder);

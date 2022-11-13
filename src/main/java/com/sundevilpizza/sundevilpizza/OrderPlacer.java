@@ -2,9 +2,12 @@
 
 package com.sundevilpizza.sundevilpizza;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,33 +17,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicReferenceArray;
+import java.net.URL;
+import java.time.LocalTime;
+import java.util.*;
 
 
-public class OrderPlacer {
-
-
-    public RadioButton origRadio;
-    public RadioButton thinRadio;
-    public RadioButton chickpeaRadio;
-    public RadioButton cauliflowerRadio;
-    public ToggleGroup PizzaTypeToggle;
-
-    public RadioButton smallRadio;
-    public RadioButton mediumRadio;
-    public RadioButton largeRadio;
-    public ToggleGroup PizzaSizeToggle;
-
-    public CheckBox xtraCheckBox;
-    public CheckBox pepperoniCheckBox;
-    public CheckBox sausageCheckBox;
-    public CheckBox hamCheckBox;
-    public CheckBox jalapenoCheckBox;
-    public CheckBox oliveCheckBox;
-    public CheckBox onionCheckBox;
-    public CheckBox mushroomCheckBox;
-    public CheckBox pineappleCheckBox;
+public class OrderPlacer implements Initializable {
 
     public TextArea textArea;
     public Label cartTotalLabel;
@@ -52,13 +34,45 @@ public class OrderPlacer {
 
     public VBox pizzaTypesBox;
     public VBox pizzaToppingsBox;
-    public VBox shoppingCartBox;
-    public HBox sizeBox;
 
+    public ComboBox pickupCombo;
 
 
     double pizzaCost = 0;
     ShoppingCart s1 = new ShoppingCart();
+
+    public void fillHours(ComboBox b) {
+        //Obtain the current hour
+        int hour = Integer.parseInt(LocalTime.now().toString().substring(0,2));
+        //If the current minutes are 15 minutes from the hour, increase our hour
+        //It doesn't make sense to place an order for pickup in 5 minutes.
+        if (Integer.parseInt(LocalTime.now().toString().substring(3,5)) > 45) {
+            hour++;
+        }
+        System.out.println(hour);
+
+
+        ArrayList<String> times = new ArrayList<>();
+        //5am to 10pm pickup times
+        for (int idx = hour; idx < 22; idx++) {
+            if (idx < 11) {
+                times.add(idx+":00am - " + (idx+1) + ":00am");
+            }
+            else if (idx == 11) {
+                times.add(idx+":00am - " + (idx+1) + ":00pm");
+            }
+            else
+                times.add((idx-11)+":00pm - " + (idx-10) + ":00pm");
+        }
+
+        b.setItems(FXCollections.observableArrayList(times));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        fillHours(pickupCombo);
+    }
+
 
     //Obtain all pizzaInfo such as Type, Size, Cost
     public Pizza pizzaInfo() {
