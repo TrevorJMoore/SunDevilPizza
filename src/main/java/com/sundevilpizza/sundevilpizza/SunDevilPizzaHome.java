@@ -120,22 +120,22 @@ public class SunDevilPizzaHome extends Application {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            //Scene orderScene = placeOrderScene();
-
-
-
             mainStage.hide();
-
         };
 
         EventHandler<ActionEvent> viewOrder = actionEvent -> {
-            Scene viewOrderScene = new Scene(viewOrderView(), 500, 500);
-            Stage viewOrderStage = new Stage();
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("viewOrder.fxml"));
+                Scene orderScene = new Scene(root);
+                Stage orderStage = placeOrderStage();
+                orderStage.setScene(orderScene);
+                orderStage.show();
+                orderStage.setOnCloseRequest(closeOrder);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
             mainStage.hide();
-            viewOrderStage.setScene(viewOrderScene);
-            viewOrderStage.show();
-            viewOrderStage.setOnCloseRequest(closeOrder);
         };
 
         EventHandler<ActionEvent> login = actionEvent -> {
