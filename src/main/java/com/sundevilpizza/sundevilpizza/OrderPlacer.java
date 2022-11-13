@@ -4,16 +4,22 @@ package com.sundevilpizza.sundevilpizza;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReferenceArray;
 
 
 public class OrderPlacer {
+
 
     public RadioButton origRadio;
     public RadioButton thinRadio;
@@ -55,7 +61,7 @@ public class OrderPlacer {
     ShoppingCart s1 = new ShoppingCart();
 
     //Obtain all pizzaInfo such as Type, Size, Cost
-    private Pizza pizzaInfo() {
+    public Pizza pizzaInfo() {
         Pizza p1 = new Pizza();
         //Check Pizza Type and Size
         for (Node pizzaType: pizzaTypesBox.getChildren()) {
@@ -87,7 +93,9 @@ public class OrderPlacer {
                 }
 
             }
+          
         }
+        
 
         //Pizza Toppings
         ArrayList<String> top = new ArrayList<>();
@@ -190,6 +198,32 @@ public class OrderPlacer {
         event.consume();
     }
 
+    private Stage placeOrderStage() {
+        Stage placeOrderStage = new Stage();
+        placeOrderStage.setTitle("Sun Devil Pizza - Place Order");
+        return placeOrderStage;
+    }
+
+    @FXML
+    void placeOrder(ActionEvent event) {
+    	
+        event.consume();
+        	try {
+        		
+                Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+                Scene checkoutScene = new Scene(root);
+                Stage checkoutStage = placeOrderStage();
+                checkoutStage.setScene(checkoutScene);
+                checkoutStage.show();
+               // chefStage.setOnCloseRequest(closeOrder);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+          //  mainStage.hide();
+       	
+       }
+        
+    
 
 
 }
