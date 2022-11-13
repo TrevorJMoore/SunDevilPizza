@@ -129,7 +129,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Button fx:id="placeOrderButton" mnemonicParsing="false" prefWidth="500.0" text="Place Order">
+            <Button fx:id="placeOrderButton" mnemonicParsing="false" onAction="#placeOrder" prefWidth="500.0" text="Place Order">
                <font>
                   <Font size="16.0" />
                </font>
