@@ -4,23 +4,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class chefController extends OrderPlacer {
-	
-	// public TextArea chefOrderText;
-	
-	//ShoppingCart s2 = new ShoppingCart();
-	//Pizza s;
-	
-	
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
 	@FXML
     private void startOrder(ActionEvent event) {
         event.consume();
-     //  this.s = s;
-       // s.getPizzaType();
-      //  chefOrderText.setText(s.getPizzaSize());
-        
-        // gets order data
-        
         System.out.print("works");
         
     }

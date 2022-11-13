@@ -5,6 +5,7 @@ package com.sundevilpizza.sundevilpizza;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -37,6 +39,10 @@ public class OrderPlacer implements Initializable {
 
     public ComboBox pickupCombo;
 
+    public TextField username;
+    public Button verifyButton;
+    public Label loginText;
+
 
     double pizzaCost = 0;
     ShoppingCart s1 = new ShoppingCart();
@@ -49,7 +55,6 @@ public class OrderPlacer implements Initializable {
         if (Integer.parseInt(LocalTime.now().toString().substring(3,5)) > 45) {
             hour++;
         }
-        System.out.println(hour);
 
 
         ArrayList<String> times = new ArrayList<>();
@@ -70,7 +75,11 @@ public class OrderPlacer implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        fillHours(pickupCombo);
+        if (url.toString().endsWith("placeOrder.fxml"))
+        {
+            fillHours(pickupCombo);
+        }
+
     }
 
 
@@ -218,26 +227,70 @@ public class OrderPlacer implements Initializable {
         return placeOrderStage;
     }
 
+
+
     @FXML
     void placeOrder(ActionEvent event) {
-    	
+
+
+
         event.consume();
-        	try {
-        		
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        if (textArea.getLength() <= 0) {
+            a.setTitle("Order Not Placed");
+            a.setContentText("ERROR - Did not place an order!");
+            a.show();
+            addButton.requestFocus();
+        } else if (pickupCombo.getValue() == null)
+        {
+            a.setTitle("Pickup Not Selected");
+            a.setContentText("ERROR - Did not select a pickup time!");
+            a.show();
+            pickupCombo.requestFocus();
+        } else {
+            try {
+
                 Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
                 Scene checkoutScene = new Scene(root);
                 Stage checkoutStage = placeOrderStage();
                 checkoutStage.setScene(checkoutScene);
                 checkoutStage.show();
-               // chefStage.setOnCloseRequest(closeOrder);
+
+                //checkoutStage.setOnCloseRequest(verifyOrder);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-          //  mainStage.hide();
+        }
        	
        }
-        
-    
 
+    @FXML
+    void userLogin(ActionEvent event) {
+        checkLogin();
+
+    }
+    private void checkLogin() {
+        //
+
+        // we check the length of asu id, assuming that the user has entered correct id
+        // we dont have a databse to check it :(
+
+
+
+        //	String typeUse = "Username: ";
+        try {
+            String id = username.getText().toString();
+            if (id.length() == 10 && Integer.parseInt(id) > 1000000000) {
+                loginText.setText("Success!");
+
+            } else {
+                loginText.setText("Incorrect User id");
+            }
+        } catch (NumberFormatException e) {
+            loginText.setText("Please enter a valid numerical ID.");
+        }
+        //	name = (new StringBuilder()).append(typeUsername).append(name).toString();
+
+    }
 
 }

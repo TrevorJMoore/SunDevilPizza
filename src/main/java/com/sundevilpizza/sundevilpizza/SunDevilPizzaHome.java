@@ -140,14 +140,6 @@ public class SunDevilPizzaHome extends Application {
         };
 
         EventHandler<ActionEvent> login = actionEvent -> {
-          //  Scene loginScene = userLoginScene();
-          //  Stage loginStage = userLoginStage();
-
-
-           // mainStage.hide();
-           // loginStage.setScene(loginScene);
-           // loginStage.show();
-           // loginStage.setOnCloseRequest(closeOrder);
         	 try {
                  Parent root = FXMLLoader.load(getClass().getResource("chefView.fxml"));
                  Scene chefScene = new Scene(root);
@@ -159,7 +151,7 @@ public class SunDevilPizzaHome extends Application {
                  e.printStackTrace();
              }
              mainStage.hide();
-        	
+
         };
 
 

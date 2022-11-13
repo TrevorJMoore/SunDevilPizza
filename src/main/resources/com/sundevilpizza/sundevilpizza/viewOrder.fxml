@@ -30,12 +30,12 @@
                      </font>
                   </Label>
                   <TextField fx:id="orderIDTextField" />
-                  <Label text="Email:">
+                  <Label text="ASU ID:">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="emailTextField" />
+                  <TextField fx:id="studentIDTextField" />
                   <HBox alignment="CENTER">
                      <children>
                         <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchOrder" text="Search" />
