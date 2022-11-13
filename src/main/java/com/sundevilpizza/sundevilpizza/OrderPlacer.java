@@ -15,7 +15,6 @@ import java.util.concurrent.atomic.AtomicReferenceArray;
 
 public class OrderPlacer {
 
-
     public RadioButton origRadio;
     public RadioButton thinRadio;
     public RadioButton chickpeaRadio;
