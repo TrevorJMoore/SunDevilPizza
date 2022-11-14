@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class OrderFileHandler {
 
     private static File orderFile;
-    private static ArrayList<ShoppingCart> allOrders = new ArrayList<>();
+    private ArrayList<ShoppingCart> allOrders = new ArrayList<>();
 
 
     //Create the order file if not already created.
@@ -22,7 +22,10 @@ public class OrderFileHandler {
             } else {
                 System.out.println(orderFile.getName() + " already exists.");
                 //Obtain all cached orders and fill them
-               // populateOrders();
+                populateOrders();
+                for (ShoppingCart s : allOrders) {
+                    System.out.println(s.fileString());
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,69 +41,65 @@ public class OrderFileHandler {
         int positionInOrder = 0;
         try {
             Scanner reader = new Scanner(orderFile);
-
-            for (int orderNumber = 0; orderNumber < getAmtOrders();)
+            System.out.println(getAmtOrders());
+            for (int orderNumber = 0; orderNumber < getAmtOrders(); orderNumber++)
             {
                 //Create orderNumber amount of ShoppingCarts
                 ShoppingCart s = new ShoppingCart();
+                s.setOrderID(Integer.toString(orderNumber));
+                System.out.println("Order Number: " + orderNumber);
                 while (reader.hasNextLine()) {
                     data = reader.nextLine();
 
                     //Handle the first 4 lines. (0 OrderID, 1 StudentID, 2 OrderStatus, 3 PickupTime)
-                    switch (positionInOrder) {
-                        case 0:
-                            break;
-                        case 1:
-                            s.setStudentID(data);
-                            break;
-                        case 2:
-                            s.setStatus(data);
-                            break;
-                        case 3:
-                            s.setPickupTime(data);
-                            break;
-                    }
-
                     //Handle subsequent lines until we find a '\'
                     if (!data.equals("\\") && positionInOrder != 0) {
-                        //So we found
+                        switch (positionInOrder) {
+                            case 1:
+                                s.setStudentID(data);
+                                break;
+                            case 2:
+                                s.setStatus(data);
+                                break;
+                            case 3:
+                                s.setPickupTime(data);
+                                break;
+                            default:
+                                //So we found pizza info
+                                data = data.replaceAll("\t", "");
+                                String[] split = data.replaceAll(",", "").split(" ");
+                                //We know the first 3 | Size | Crust Crust
+                                Pizza p = new Pizza();
+                                p.setPizzaSize(split[0]);
+                                p.setPizzaType(split[1] + " " + split[2]);
+                                for (int j = 4; j < split.length; j++) {
+                                    p.addTopping(split[j]);
+                                    System.out.println(split[j]);
+                                }
+                                s.addPizza(p);
+                        }
+
+
 
 
                     }
+                    positionInOrder++;
 
+                    //When we find a '\' set positionInOrder back to 0
                     //END OF ORDER '\' found
                     if (data.equals("\\")) {
                         positionInOrder = 0;
                         break;
                     }
 
-
-                    positionInOrder++;
                 }
-                //When we find a '\' increase orderNumber and set positionInOrder back to 0
+                allOrders.add(s);
 
             }
 
 
 
         } catch (FileNotFoundException e) {
-
-        }
-        for (int idx = 0; idx < getAmtOrders(); idx++) {
-            //Each order starts with orderNumber
-            //Each order ends with a backslash '\'
-            try {
-                Scanner reader = new Scanner(orderFile);
-                ShoppingCart c1 = new ShoppingCart();
-                while (reader.hasNextLine()) {
-
-                    positionInOrder++;
-                }
-                reader.close();
-
-            } catch (FileNotFoundException e) {
-
-            }
 
         }
     }
@@ -118,12 +117,11 @@ public class OrderFileHandler {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(data);
+        //System.out.println(data);
 
         for (int idx = 0; idx < data.length(); idx++) {
             if (data.charAt(idx) == '\\' ) {
                 amt++;
-                System.out.println(amt);
             }
         }
 
@@ -131,8 +129,13 @@ public class OrderFileHandler {
 
     }
 
+    public ShoppingCart getOrder(int idx) {
+        return allOrders.get(idx);
+    }
 
-
+    public ArrayList<ShoppingCart> getOrders() {
+        return allOrders;
+    }
 
     public void addOrder(ShoppingCart s) {
         try {
