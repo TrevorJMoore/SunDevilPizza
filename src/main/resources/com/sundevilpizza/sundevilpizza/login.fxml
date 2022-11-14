@@ -6,20 +6,20 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.OrderPlacer">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.OrderPlacer">
    <children>
       <Label text="Enter ASU ID">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="username" maxWidth="150.0" promptText="ASU ID">
+      <TextField fx:id="username" maxWidth="150.0" promptText="ASU ID*" style="-fx-border-color: #ffc900;">
          <VBox.margin>
             <Insets />
          </VBox.margin></TextField>
-      <Button fx:id="verifyButton" minWidth="150.0" mnemonicParsing="false" onAction="#userLogin" text="Verify">
+      <Button fx:id="verifyButton" minWidth="150.0" mnemonicParsing="false" onAction="#userLogin" style="-fx-background-color: #ffc900;" text="Verify">
          <VBox.margin>
-            <Insets top="30.0" />
+            <Insets top="10.0" />
          </VBox.margin></Button>
       <Label fx:id="loginText">
          <VBox.margin>

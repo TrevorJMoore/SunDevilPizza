@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.chefController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.chefController">
    <children>
-      <TextArea fx:id="chefOrderText" editable="false" prefHeight="370.0" prefWidth="300.0" />
+      <TextArea fx:id="chefOrderText" editable="false" prefHeight="370.0" prefWidth="300.0" style="-fx-border-color: #ffc900; -fx-border-width: 3px;" />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
-            <Button fx:id="startOrderButton" mnemonicParsing="false" onAction="#startOrder" text="Start Order" />
-            <Button fx:id="cancelOrderButton" mnemonicParsing="false" onAction="#cancelOrder" text="Cancel Order" />
+            <Button fx:id="startOrderButton" mnemonicParsing="false" onAction="#startOrder" style="-fx-background-color: #ffc900;" text="Start Order" />
+            <Button fx:id="cancelOrderButton" mnemonicParsing="false" onAction="#cancelOrder" style="-fx-background-color: #ffc900;" text="Cancel Order" />
          </children>
          <opaqueInsets>
             <Insets />

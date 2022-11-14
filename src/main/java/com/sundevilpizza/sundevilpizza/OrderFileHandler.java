@@ -22,7 +22,7 @@ public class OrderFileHandler {
             } else {
                 System.out.println(orderFile.getName() + " already exists.");
                 //Obtain all cached orders and fill them
-                populateOrders();
+               // populateOrders();
             }
         } catch (IOException e) {
             e.printStackTrace();

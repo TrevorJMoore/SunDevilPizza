@@ -67,17 +67,21 @@ public class SunDevilPizzaHome extends Application {
         Button placeOrderButton = new Button();
         placeOrderButton.setText("Place an Order");
         placeOrderButton.setFont(bodyFont);
+        placeOrderButton.setStyle("-fx-background-color: #ffc900; ");
 
         Button viewOrderButton = new Button();
         viewOrderButton.setText("View an Order");
         viewOrderButton.setFont(bodyFont);
+        viewOrderButton.setStyle("-fx-background-color: #ffc900; ");
 
         Button loginButton = new Button();
         loginButton.setText("Restaurant Login");
         loginButton.setFont(lesserFont);
+        loginButton.setStyle("-fx-background-color: #ffc900; ");
 
         //Begin by loading the default / welcome view Scene
         VBox layout = new VBox();
+        layout.setStyle("-fx-background-color: white; ");
         layout.getChildren().addAll(titleHeader, placeOrderButton, viewOrderButton, loginButton);
         layout.setAlignment(Pos.CENTER);
         layout.setSpacing(16);

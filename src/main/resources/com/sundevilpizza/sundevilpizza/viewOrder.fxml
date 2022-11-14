@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.OrderViewer">
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="325.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.OrderViewer">
    <children>
       <Label text="Sun Devil Pizza - View an Order">
          <font>
@@ -29,16 +28,16 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="orderIDTextField" />
+                  <TextField fx:id="orderIDTextField" promptText="required*" style="-fx-border-color: #ffc900;" />
                   <Label text="ASU ID:">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="studentIDTextField" />
+                  <TextField fx:id="studentIDTextField" promptText="required*" style="-fx-border-color: #ffc900;" />
                   <HBox alignment="CENTER">
                      <children>
-                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchOrder" text="Search" />
+                        <Button fx:id="searchButton" mnemonicParsing="false" onAction="#searchOrder" style="-fx-background-color: #ffc900;" text="Search" />
                      </children>
                      <padding>
                         <Insets top="10.0" />
@@ -54,7 +53,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="viewTextArea" editable="false" prefWidth="250.0" />
+                  <TextArea fx:id="viewTextArea" editable="false" prefWidth="250.0" style="-fx-border-color: #ffc900;" />
                </children>
             </VBox>
          </children>

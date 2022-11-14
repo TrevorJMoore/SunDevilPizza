@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.OrderPlacer">
+<VBox alignment="CENTER" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.sundevilpizza.sundevilpizza.OrderPlacer">
    <children>
       <Label alignment="CENTER" text="Sun Devil Pizza - Place an Order" textAlignment="CENTER">
          <font>
@@ -95,7 +95,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="textArea" editable="false" prefHeight="250.0" prefWidth="200.0" />
+                  <TextArea fx:id="textArea" editable="false" prefHeight="250.0" prefWidth="200.0" style="-fx-border-color: #ffc900;" />
                   <VBox prefWidth="100.0">
                      <children>
                         <Label fx:id="cartTotalLabel" text="Cart Total: ">
@@ -112,12 +112,12 @@
                   </VBox>
                   <HBox alignment="TOP_CENTER" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addToCart" text="Add">
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#addToCart" style="-fx-background-color: #ffc900;" text="Add">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeFromCart" text="Remove">
+                        <Button fx:id="removeButton" mnemonicParsing="false" onAction="#removeFromCart" style="-fx-background-color: #ffc900;" text="Remove">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -131,7 +131,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="pickupCombo" prefWidth="150.0" promptText="Select a Time" />
+                        <ComboBox fx:id="pickupCombo" prefWidth="150.0" promptText="Select a Time" style="-fx-background-color: #ffc900;" />
                      </children>
                      <padding>
                         <Insets top="10.0" />
@@ -143,7 +143,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
          <children>
-            <Button fx:id="placeOrderButton" mnemonicParsing="false" prefWidth="500.0" onAction="#placeOrder" text="Place Order">
+            <Button fx:id="placeOrderButton" mnemonicParsing="false" onAction="#placeOrder" prefWidth="500.0" style="-fx-background-color: #ffc900;" text="Place Order">
                <font>
                   <Font size="16.0" />
                </font>
