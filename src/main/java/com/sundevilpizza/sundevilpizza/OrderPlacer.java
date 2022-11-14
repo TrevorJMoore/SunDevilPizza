@@ -120,9 +120,9 @@ public class OrderPlacer implements Initializable {
                 }
 
             }
-          
+
         }
-        
+
 
         //Pizza Toppings
         ArrayList<String> top = new ArrayList<>();
@@ -249,6 +249,7 @@ public class OrderPlacer implements Initializable {
                     OrderFileHandler o = new OrderFileHandler();
                     s1.setOrderID( Integer.toString(o.getAmtOrders()) );
                     s1.setStudentID(asuID);
+                    s1.setStatus("ACCEPTED");
                     o.addOrder(s1);
 
                     Alert a = new Alert(Alert.AlertType.CONFIRMATION);
@@ -285,8 +286,8 @@ public class OrderPlacer implements Initializable {
                 e.printStackTrace();
             }
         }
-       	
-       }
+
+    }
 
 
     @FXML
