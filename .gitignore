@@ -34,3 +34,7 @@ target/classes/com/sundevilpizza/sundevilpizza/SunDevilPizzaApp.class
 target/classes/com/sundevilpizza/sundevilpizza/SunDevilPizzaHome$1.class
 target/classes/com/sundevilpizza/sundevilpizza/SunDevilPizzaHome.class
 target/classes/com/sundevilpizza/sundevilpizza/viewOrder.fxml
+.idea/libraries/mysql_connector_java_8_0_30.xml
+target/classes/com/sundevilpizza/sundevilpizza/chefController.class
+target/classes/com/sundevilpizza/sundevilpizza/chefView.fxml
+target/classes/com/sundevilpizza/sundevilpizza/login.fxml
