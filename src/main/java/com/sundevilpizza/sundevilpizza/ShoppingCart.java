@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class ShoppingCart {
     //Shopping Cart has Pizzas (multiple, in fact)
     private ArrayList<Pizza> cart = new ArrayList<>();
-    private String pickupTime, orderID, studentID, orderStatus;
+    private String pickupTime;
+    private String orderID;
+    private String studentID;
 
     public void setPickupTime(String pickup) {
         pickupTime = pickup;
@@ -19,15 +21,7 @@ public class ShoppingCart {
         studentID = student;
     }
 
-    public void setStatus(String status) {
-        orderStatus = status;
-    }
-
     //Accessors
-    public String getStatus() {
-        return orderStatus;
-    }
-
     public String getPickupTime() {
         return pickupTime;
     }
@@ -101,7 +95,6 @@ public class ShoppingCart {
         //Ex: Size Type - Toppings
         ret += orderID + "\n";
         ret += studentID + "\n";
-        ret += orderStatus + "\n";
         ret += pickupTime + "\n";
 
         for (Pizza p: cart) {
