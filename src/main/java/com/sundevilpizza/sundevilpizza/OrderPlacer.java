@@ -191,5 +191,93 @@ public class OrderPlacer {
     }
 
 
+<<<<<<< Updated upstream
+=======
+                    OrderFileHandler o = new OrderFileHandler();
+                    s1.setOrderID( Integer.toString(o.getAmtOrders()) );
+                    s1.setStudentID(asuID);
+                    s1.setStatus("ACCEPTED");
+                    o.addOrder(s1);
+
+                    Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                    a.setTitle("Order Placed!");
+                    a.setContentText("Order has been placed!\n"+"Email sent to ASUID: " + asuID);
+                    a.show();
+                }
+            }
+        };
+
+        event.consume();
+        Alert a = new Alert(Alert.AlertType.ERROR);
+        if (textArea.getLength() <= 0) {
+            a.setTitle("Order Not Placed");
+            a.setContentText("ERROR - Did not place an order!");
+            a.show();
+            addButton.requestFocus();
+        } else if (pickupCombo.getValue() == null)
+        {
+            a.setTitle("Pickup Not Selected");
+            a.setContentText("ERROR - Did not select a pickup time!");
+            a.show();
+            pickupCombo.requestFocus();
+        } else {
+            try {
+                s1.setPickupTime((String) pickupCombo.getValue());
+                Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+                Scene checkoutScene = new Scene(root);
+                Stage checkoutStage = placeOrderStage();
+                checkoutStage.setScene(checkoutScene);
+                checkoutStage.show();
+                checkoutStage.setOnHiding(verifyClose);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+       	
+       }
+
+
+    @FXML
+    void userLogin(ActionEvent event) {
+        checkLogin();
+        if (verifiedLogin)
+        {
+            Stage verifyStage = (Stage) verifyButton.getScene().getWindow();
+            verifyStage.close();
+        }
+    }
+    private void checkLogin() {
+        //
+
+        // we check the length of asu id, assuming that the user has entered correct id
+        // we dont have a databse to check it :(
+
+
+
+        //	String typeUse = "Username: ";
+        try {
+            String id = username.getText().toString();
+            if (id.length() == 10 && Integer.parseInt(id) > 1000000000) {
+                loginText.setText("Success!");
+
+                asuID=id;
+                verifiedLogin = true;
+                /*a.setTitle("Order Placed!");
+                a.setContentText("Order has been placed!\n"+"Email sent to ASUID: " + asuID);
+                a.show();*/
+
+
+                System.out.println("Order placed");
+
+            } else {
+                loginText.setText("Incorrect User id");
+            }
+        } catch (NumberFormatException e) {
+            loginText.setText("Please enter a valid numerical ID.");
+        }
+        //	name = (new StringBuilder()).append(typeUsername).append(name).toString();
+
+    }
+>>>>>>> Stashed changes
 
 }
