@@ -3,6 +3,7 @@ package com.sundevilpizza.sundevilpizza;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -21,6 +22,31 @@ import java.util.ArrayList;
 public class SunDevilPizzaHome extends Application {
 
 
+	  @FXML
+	    private Label loginText;
+
+	    @FXML
+	    private TextField username;
+
+	    @FXML
+	    private Button verifyButton;
+
+	    @FXML
+	    void userLogin(ActionEvent event) {
+	    	
+	    	try {
+                Parent root = FXMLLoader.load(getClass().getResource("chefView.fxml"));
+                Scene chefScene = new Scene(root);
+                Stage chefStage = placeOrderStage();
+                chefStage.setScene(chefScene);
+                chefStage.show();
+               // chefStage.setOnCloseRequest(closeOrder);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+	    	
+
+	    }
 
 
     private final int WIDTH = 500, HEIGHT = 500;
@@ -129,10 +155,11 @@ public class SunDevilPizzaHome extends Application {
 
             mainStage.hide();
         };
+        
 
         EventHandler<ActionEvent> login = actionEvent -> {
         	 try {
-                 Parent root = FXMLLoader.load(getClass().getResource("chefView.fxml"));
+                 Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
                  Scene chefScene = new Scene(root);
                  Stage chefStage = placeOrderStage();
                  chefStage.setScene(chefScene);
