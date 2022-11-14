@@ -18,6 +18,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalTime;
@@ -46,6 +48,8 @@ public class OrderPlacer implements Initializable {
 
     double pizzaCost = 0;
     ShoppingCart s1 = new ShoppingCart();
+    static boolean verifiedLogin = false;
+    static String asuID;
 
     public void fillHours(ComboBox b) {
         //Obtain the current hour
@@ -232,7 +236,28 @@ public class OrderPlacer implements Initializable {
     @FXML
     void placeOrder(ActionEvent event) {
 
+        EventHandler<WindowEvent> verifyClose = new EventHandler<>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                if (verifiedLogin)
+                {
+                    Stage placeOrderStage = (Stage) addButton.getScene().getWindow();
+                    placeOrderStage.close();
 
+                    //Write the order down
+
+                    OrderFileHandler o = new OrderFileHandler();
+                    s1.setOrderID( Integer.toString(o.getAmtOrders()) );
+                    s1.setStudentID(asuID);
+                    o.addOrder(s1);
+
+                    Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                    a.setTitle("Order Placed!");
+                    a.setContentText("Order has been placed!\n"+"Email sent to ASUID: " + asuID);
+                    a.show();
+                }
+            }
+        };
 
         event.consume();
         Alert a = new Alert(Alert.AlertType.ERROR);
@@ -249,14 +274,13 @@ public class OrderPlacer implements Initializable {
             pickupCombo.requestFocus();
         } else {
             try {
-
+                s1.setPickupTime((String) pickupCombo.getValue());
                 Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
                 Scene checkoutScene = new Scene(root);
                 Stage checkoutStage = placeOrderStage();
                 checkoutStage.setScene(checkoutScene);
                 checkoutStage.show();
-
-                //checkoutStage.setOnCloseRequest(verifyOrder);
+                checkoutStage.setOnHiding(verifyClose);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -264,10 +288,15 @@ public class OrderPlacer implements Initializable {
        	
        }
 
+
     @FXML
     void userLogin(ActionEvent event) {
         checkLogin();
-
+        if (verifiedLogin)
+        {
+            Stage verifyStage = (Stage) verifyButton.getScene().getWindow();
+            verifyStage.close();
+        }
     }
     private void checkLogin() {
         //
@@ -282,6 +311,15 @@ public class OrderPlacer implements Initializable {
             String id = username.getText().toString();
             if (id.length() == 10 && Integer.parseInt(id) > 1000000000) {
                 loginText.setText("Success!");
+
+                asuID=id;
+                verifiedLogin = true;
+                /*a.setTitle("Order Placed!");
+                a.setContentText("Order has been placed!\n"+"Email sent to ASUID: " + asuID);
+                a.show();*/
+
+
+                System.out.println("Order placed");
 
             } else {
                 loginText.setText("Incorrect User id");

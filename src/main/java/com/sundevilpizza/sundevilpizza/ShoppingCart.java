@@ -5,9 +5,35 @@ import java.util.ArrayList;
 public class ShoppingCart {
     //Shopping Cart has Pizzas (multiple, in fact)
     private ArrayList<Pizza> cart = new ArrayList<>();
+    private String pickupTime;
+    private String orderID;
+    private String studentID;
 
+    public void setPickupTime(String pickup) {
+        pickupTime = pickup;
+    }
+
+    public void setOrderID(String order) {
+        orderID = order;
+    }
+
+    public void setStudentID(String student) {
+        studentID = student;
+    }
 
     //Accessors
+    public String getPickupTime() {
+        return pickupTime;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public String getStudentID() {
+        return studentID;
+    }
+
     public double getTotal() {
         double total = 0;
         for (Pizza p : cart) {
@@ -58,6 +84,25 @@ public class ShoppingCart {
             }
             else {
                 ret += p.getPizzaSize() + " " + p.getPizzaType() + p.getToppings() + "\n";
+            }
+        }
+        return ret;
+    }
+
+    public String fileString() {
+        String ret = "";
+        //Ex: Small Original Crust - Pepperoni, Cheese
+        //Ex: Size Type - Toppings
+        ret += orderID + "\n";
+        ret += studentID + "\n";
+        ret += pickupTime + "\n";
+
+        for (Pizza p: cart) {
+            if (p.hasToppings()) {
+                ret += "\t" + p.getPizzaSize() + " " + p.getPizzaType() + " - " + p.getToppings() + "\n";
+            }
+            else {
+                ret += "\t" + p.getPizzaSize() + " " + p.getPizzaType() + p.getToppings() + "\n";
             }
         }
         return ret;

@@ -9,5 +9,5 @@ public class OrderViewer {
     public void searchOrder(ActionEvent actionEvent) {
     }
 
-    
+
 }

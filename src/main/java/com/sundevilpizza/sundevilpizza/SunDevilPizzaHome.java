@@ -88,19 +88,6 @@ public class SunDevilPizzaHome extends Application {
         mainStage.show();
 
 
-
-        //Event Handling for Children Windows (Place Order View / View Order View)
-
-
-
-        //Event Handling for Processing Agent View
-
-
-        //Event Handling for Chef View
-
-
-
-
         //Event Handling for Main Buttons (Place Order / View Order / Login Buttons) and Form Closing
         EventHandler<WindowEvent> closeOrder = new EventHandler<>() {
             @Override
@@ -117,7 +104,7 @@ public class SunDevilPizzaHome extends Application {
 
                 orderStage.setScene(orderScene);
                 orderStage.show();
-                orderStage.setOnCloseRequest(closeOrder);
+                orderStage.setOnHidden(closeOrder);
             } catch (IOException e) {
                 e.printStackTrace();
             }
