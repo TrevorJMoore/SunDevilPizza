@@ -62,6 +62,12 @@ public class SunDevilPizzaHome extends Application {
         return placeOrderStage;
     }
 
+    private Stage chefOrderStage() {
+        Stage chefStage = new Stage();
+        chefStage.setTitle("Sun Devil Pizza - Chef View");
+        return chefStage;
+    }
+
     private GridPane viewOrderView() {
         GridPane gridPane = new GridPane();
 

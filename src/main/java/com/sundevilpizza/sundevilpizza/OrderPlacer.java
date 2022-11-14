@@ -63,12 +63,15 @@ public class OrderPlacer implements Initializable {
 
         ArrayList<String> times = new ArrayList<>();
         //5am to 10pm pickup times
-        for (int idx = hour; idx < 22; idx++) {
+        for (int idx = hour; idx < 23; idx++) {
             if (idx < 11) {
                 times.add(idx+":00am - " + (idx+1) + ":00am");
             }
             else if (idx == 11) {
                 times.add(idx+":00am - " + (idx+1) + ":00pm");
+            }
+            else if (idx == 22) {
+                times.add((idx-11)+":00pm - " + (idx-10)+":00am");
             }
             else
                 times.add((idx-11)+":00pm - " + (idx-10) + ":00pm");
@@ -247,14 +250,16 @@ public class OrderPlacer implements Initializable {
                     //Write the order down
 
                     OrderFileHandler o = new OrderFileHandler();
-                    s1.setOrderID( Integer.toString(o.getAmtOrders()) );
+                    int orderId = Integer.parseInt(o.getLastOrderID())+1;
+                    s1.setOrderID( Integer.toString(orderId) );
                     s1.setStudentID(asuID);
                     s1.setStatus("ACCEPTED");
                     o.addOrder(s1);
+                    System.out.println("AmtLines: " + o.amtLines(orderId));
 
                     Alert a = new Alert(Alert.AlertType.CONFIRMATION);
                     a.setTitle("Order Placed!");
-                    a.setContentText("Order has been placed!\n"+"Email sent to ASUID: " + asuID);
+                    a.setContentText("Order has been placed!\n"+"Your OrderID is: " + orderId + "\nEmail sent to ASUID: " + asuID);
                     a.show();
                 }
             }
