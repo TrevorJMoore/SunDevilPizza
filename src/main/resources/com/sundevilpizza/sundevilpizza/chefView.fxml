@@ -12,7 +12,8 @@
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
          <children>
             <Button fx:id="startOrderButton" mnemonicParsing="false" onAction="#startOrder" style="-fx-background-color: #ffc900;" text="Start Order" />
-            <Button fx:id="cancelOrderButton" mnemonicParsing="false" onAction="#cancelOrder" style="-fx-background-color: #ffc900;" text="Cancel Order" />
+            <Button fx:id="cancelOrderButton" mnemonicParsing="false" onAction="#cancelOrder" style="-fx-background-color: #fc4103;" text="Cancel Order" />
+            <Button fx:id="finishOrderButton" mnemonicParsing="false" onAction="#finishOrder" style="-fx-background-color: #ffc900;" text="Finish Order" />
          </children>
          <opaqueInsets>
             <Insets />

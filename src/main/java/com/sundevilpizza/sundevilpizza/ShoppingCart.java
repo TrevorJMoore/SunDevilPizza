@@ -95,6 +95,26 @@ public class ShoppingCart {
         return ret;
     }
 
+    public String employeeString() {
+        String ret = "";
+        ret += "OrderID: " + orderID;
+        ret += "\nOrder Status: " + orderStatus;
+        ret += "\nASUID: " + studentID;
+        ret += "\nPickup Time: " + pickupTime;
+        ret += "\n\nOrder Info:\n";
+
+        for (Pizza p : cart) {
+            if (p.hasToppings()) {
+                ret += "\t" + p.getPizzaSize() + " " + p.getPizzaType() + " - " + p.getToppings() + "\n";
+            }
+            else {
+                ret += "\t" + p.getPizzaSize() + " " + p.getPizzaType() + p.getToppings() + "\n";
+            }
+        }
+
+        return ret;
+    }
+
     public String viewString() {
         String ret = "";
 

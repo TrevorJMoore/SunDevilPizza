@@ -22,27 +22,41 @@ import java.util.ArrayList;
 public class SunDevilPizzaHome extends Application {
 
 
-	  @FXML
-	    private Label loginText;
+    public TextField employeeID;
 
-	    @FXML
-	    private TextField username;
-
-	    @FXML
-	    private Button verifyButton;
 
 	    @FXML
 	    void userLogin(ActionEvent event) {
 	    	
 	    	try {
-                Parent root = FXMLLoader.load(getClass().getResource("chefView.fxml"));
-                Scene chefScene = new Scene(root);
-                Stage chefStage = placeOrderStage();
-                chefStage.setScene(chefScene);
-                chefStage.show();
+                int id = Integer.parseInt(employeeID.getText());
+                if (id == 9999) {
+                    Parent root = FXMLLoader.load(getClass().getResource("agentView.fxml"));
+                    Scene agentScene = new Scene(root);
+                    Stage agentStage = agentViewStage();
+                    agentStage.setScene(agentScene);
+                    agentStage.show();
+                }
+                else if (id == 1111) {
+                    Parent root = FXMLLoader.load(getClass().getResource("chefView.fxml"));
+                    Scene chefScene = new Scene(root);
+                    Stage chefStage = chefViewStage();
+                    chefStage.setScene(chefScene);
+                    chefStage.show();
+                }
+                else {
+                    Alert a = new Alert(Alert.AlertType.ERROR);
+                    a.setTitle("Invalid Credentials");
+                    a.setContentText("ERROR - Invalid Employee ID.");
+                    a.show();
+                }
+
                // chefStage.setOnCloseRequest(closeOrder);
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setTitle("Invalid Credentials");
+                a.setContentText("ERROR - Invalid Employee ID.");
+                a.show();
             }
 	    	
 
@@ -62,28 +76,30 @@ public class SunDevilPizzaHome extends Application {
         return placeOrderStage;
     }
 
-    private Stage chefOrderStage() {
-        Stage chefStage = new Stage();
-        chefStage.setTitle("Sun Devil Pizza - Chef View");
-        return chefStage;
+    private Stage viewOrderStage() {
+        Stage placeOrderStage = new Stage();
+        placeOrderStage.setTitle("Sun Devil Pizza - View Order");
+        return placeOrderStage;
     }
 
-    private GridPane viewOrderView() {
-        GridPane gridPane = new GridPane();
-
-        gridPane.setAlignment(Pos.CENTER);
-        return gridPane;
+    private Stage loginStage() {
+        Stage placeOrderStage = new Stage();
+        placeOrderStage.setTitle("Sun Devil Pizza - Login");
+        return placeOrderStage;
     }
 
-    private Scene userLoginScene()
-    {
-        return new Scene(new HBox());
+    private Stage chefViewStage() {
+        Stage placeOrderStage = new Stage();
+        placeOrderStage.setTitle("Sun Devil Pizza - Chef");
+        return placeOrderStage;
     }
 
-    private Stage userLoginStage()
-    {
-        return new Stage();
+    private Stage agentViewStage() {
+        Stage placeOrderStage = new Stage();
+        placeOrderStage.setTitle("Sun Devil Pizza - Processing Agent");
+        return placeOrderStage;
     }
+
 
     @Override
     public void start(Stage mainStage) throws Exception {
@@ -151,7 +167,8 @@ public class SunDevilPizzaHome extends Application {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("viewOrder.fxml"));
                 Scene orderScene = new Scene(root);
-                Stage orderStage = placeOrderStage();
+                Stage orderStage = viewOrderStage();
+
                 orderStage.setScene(orderScene);
                 orderStage.show();
                 orderStage.setOnCloseRequest(closeOrder);
@@ -167,7 +184,8 @@ public class SunDevilPizzaHome extends Application {
         	 try {
                  Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
                  Scene chefScene = new Scene(root);
-                 Stage chefStage = placeOrderStage();
+                 Stage chefStage = loginStage();
+
                  chefStage.setScene(chefScene);
                  chefStage.show();
                  chefStage.setOnCloseRequest(closeOrder);

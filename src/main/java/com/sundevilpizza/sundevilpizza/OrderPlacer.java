@@ -250,6 +250,7 @@ public class OrderPlacer implements Initializable {
                     //Write the order down
 
                     OrderFileHandler o = new OrderFileHandler();
+                    o.populateOrders();
                     int orderId = Integer.parseInt(o.getLastOrderID())+1;
                     s1.setOrderID( Integer.toString(orderId) );
                     s1.setStudentID(asuID);

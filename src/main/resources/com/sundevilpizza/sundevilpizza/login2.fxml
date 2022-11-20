@@ -13,7 +13,7 @@
             <Insets bottom="10.0" />
          </VBox.margin>
       </Label>
-      <TextField fx:id="username" maxWidth="150.0" promptText="User ID*" style="-fx-border-color: #ffc900;">
+      <TextField fx:id="employeeID" maxWidth="150.0" promptText="Employee ID*" style="-fx-border-color: #ffc900;">
          <VBox.margin>
             <Insets />
          </VBox.margin></TextField>

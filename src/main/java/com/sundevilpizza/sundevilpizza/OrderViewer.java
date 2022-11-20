@@ -20,13 +20,15 @@ public class OrderViewer {
 
         //Search for the order specified
         OrderFileHandler o = new OrderFileHandler();
+        //Grab all data from text file
+        o.populateOrders();
 
         //Check each order and see if it has matching orderID and studentID
         for (int idx = 0; idx < o.getAmtOrders(); idx++) {
             if (Objects.equals(o.getOrder(idx).getOrderID(), orderID) && Objects.equals(o.getOrder(idx).getStudentID(), studentID))
             {
                 viewTextArea.setText(o.getOrder(idx).viewString());
-                //o.setStatus(idx, "READY TO COOK");
+
             }
         }
 
