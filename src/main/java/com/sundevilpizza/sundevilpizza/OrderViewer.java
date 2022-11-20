@@ -30,6 +30,9 @@ public class OrderViewer {
                 viewTextArea.setText(o.getOrder(idx).viewString());
 
             }
+            else {
+            	viewTextArea.setText("Please check the entered OrderID and/or ASU ID is correct");
+            }
         }
 
 
