@@ -9,6 +9,7 @@ A Processing Agent may use the application to review orders placed and confirm t
 A Chef may use the application to begin cooking confirmed orders and to finalize the orders for pickup.
 
 Orders are stored in a text file in the main directory under "orders.txt" and are stored in the format of:
+
   0. Order ID
   1. Student ID
   2. Order Status
