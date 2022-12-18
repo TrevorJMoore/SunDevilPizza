@@ -13,5 +13,4 @@ Orders are stored in a text file in the main directory under "orders.txt" and ar
   1. Student ID
   2. Order Status
   3. Pickup Time
-  X. Order Information 
-  \
+  4. Order Information
